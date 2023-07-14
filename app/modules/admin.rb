@@ -1,8 +1,11 @@
 module Admin
   class PostsController < ApplicationController
     before_action :find_post, only: %i[update edit show destroy]
+    before_action :button_create_post
+
     def index
       @posts = Post.all
+      
     end
 
     def update
@@ -53,5 +56,10 @@ module Admin
       params.require(:post).permit(:body, :title)
     end
 
+    def button_create_post
+      @creates = true
+    end
+
+    
   end
 end

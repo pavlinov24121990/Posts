@@ -5,9 +5,6 @@ class CommentsController < ApplicationController
     @comment = Comment.new 
     @comments = @post.comments.order create_at:(:desc)
   end
-
-
-  
   
   def create
     @comment = @post.comments.new(comment_params)
