@@ -1,0 +1,11 @@
+<%= render 'shared/errors', object: @post%>
+<%= form_with model: [:admin, @post] do |c| %>
+  <%= c.label :title, 'title' %>
+  <%= c.text_field :title %>
+
+  <%= c.label :body, 'body' %>
+  <%= c.text_field :body %>
+
+  <!-- Кнопка отправки формы -->
+  <%= c.submit 'Отправить' %>
+<% end %>

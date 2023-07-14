@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PostsV2</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+  </head>
+  <div class="container">
+    <nav class="d-flex flex-wrap aling-items-center justify-content-center justify-content-lg-start ">
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <li>
+          <%= link_to 'Home', root_path, class: "nav-link px-5" %>
+        </li>
+        <li>
+          <%= link_to 'Admin panel', admin_posts_path, class: "nav-link px-5"  %>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <body>
+    <%= yield %>
+  </body>
+</html>

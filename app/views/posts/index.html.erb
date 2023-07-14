@@ -1,0 +1,15 @@
+<h2> <%= flash[:success] %> </h2>
+<h1> Welcome to PostsV2 </h1>
+<div>
+  <ul>
+    <% @posts.each do |p| %>
+      <li>
+        <h2> <%= p.title %></h2>
+        <p> <%= p.body %> </p> 
+      </li>
+      <div>
+      <%= link_to "Show", post_comments_path(p) %>
+      </div>
+    <% end %>
+  </ul>
+</div>

@@ -1,0 +1,23 @@
+<div>
+  <ul>
+      <li>
+        <h2><%= @post.title %></h2>
+      </li>
+      <li>
+        <p><%= @post.body %></p>
+      </li>
+  </ul>
+  <div>
+    <%= link_to "Create post", new_admin_post_path %>
+    <%= link_to "Update post", edit_admin_post_path(@post) %>
+    <%= button_to "Delete post", admin_post_path(@post), method: :delete, confirm: "Are you shure?" %>
+  </div>
+  <ul>
+    <h2> See comments </h2>
+    <% @post.comments.each do |c| %>
+    <li>
+      <p><%= c.body %></p>
+    </li>
+    <% end %>
+  </ul>
+</div>
