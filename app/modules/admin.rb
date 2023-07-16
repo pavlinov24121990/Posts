@@ -71,6 +71,7 @@ module Admin
     end
 
     def edit
+      @admin = :admin
     end
 
     def destroy

@@ -1,5 +1,5 @@
 <%= render 'shared/errors', object: @comment %>
- <%= form_with model: [:admin, @post, @comment] do |c| %>
+ <%= form_with model: [@admin, @post, @comment] do |c| %>
   <%= c.label :body, 'body' %>
   <%= c.text_field :body %>
 

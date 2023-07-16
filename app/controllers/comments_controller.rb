@@ -2,7 +2,6 @@ class CommentsController < ApplicationController
   before_action :post_find, only: %i[index create]
 
   def index
-    @form_comment = true
     @comment = Comment.new 
     @comments = @post.comments.order create_at:(:desc)
   end
