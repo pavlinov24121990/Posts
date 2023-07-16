@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
   def create
     @comment = @post.comments.new(comment_params)
     if @comment.save
-      redirect_to posts_path
+      redirect_to post_comments_path
       flash[:success] = "Comment created!"
     else
       render :index
