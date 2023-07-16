@@ -1,6 +1,6 @@
 module Admin
   class PostsController < ApplicationController
-    before_action :find_post, only: %i[update edit show destroy]
+    before_action :find_post, only: %i[update show edit destroy]
     before_action :button_create_post
 
     def index
@@ -59,7 +59,56 @@ module Admin
     def button_create_post
       @creates = true
     end
-
-    
   end
+
+  class CommentsController < ApplicationController
+    before_action :button_create_post
+    before_action :comment_find
+    before_action :post_find, only: %i[update show edit destroy]
+
+
+    def show
+    end
+
+    def edit
+    end
+
+    def destroy
+      if @comment.destroy
+        flash[:success] = "Comment Deleted"
+        render 'admin/posts/show'
+      else
+        render :edit
+      end
+    end
+
+    def update
+      if @comment.update(comment_params)
+        flash[:success] = "Comment Updated"
+        render 'admin/posts/show'
+      else
+        render :edit
+      end
+    end
+
+    private
+
+    def comment_params
+      params.require(:comment).permit(:body)
+    end
+
+    def comment_find
+      @comment = Comment.find(params[:id])
+    end
+
+    def post_find
+      @post = Post.find(params[:post_id])
+    end
+
+    def button_create_post
+      @creates = true
+    end
+
+  end
+
 end
