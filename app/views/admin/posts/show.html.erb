@@ -7,6 +7,7 @@
       <li>
         <p><%= @post.body %></p>
       </li>
+      <p><%= @post.user.first_name %> <%= @post.user.second_name %></p>
   </ul>
   <div>
     <%= link_to "Update post", edit_admin_post_path(@post) %>
@@ -18,6 +19,7 @@
     <li>
       <p><%= comment.body %></p>
     </li>
+    <p><%= comment.user.first_name %> <%= comment.user.second_name %></p>
     <%= link_to "Edit comment", admin_post_comment_path(@post, comment) %>
     <% end %>
   </ul>

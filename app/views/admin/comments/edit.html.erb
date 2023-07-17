@@ -4,6 +4,7 @@
       <p><%= @comment.body %></p>
     </li>
   </ul>
+  <p><%= @comment.user.first_name %> <%= @comment.user.second_name %></p>
 </div>
 <div>
 <%= render 'shared/form'%>

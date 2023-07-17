@@ -1,7 +1,6 @@
 module Admin
   class CommentsController < ApplicationController
-    before_action :button_create_post
-    before_action :comment_find
+    before_action :comment_find, :authenticate_user!, :admin_acces
     before_action :post_find, only: %i[update show edit destroy]
 
     def show
@@ -43,8 +42,11 @@ module Admin
       @post = Post.find(params[:post_id])
     end
 
-    def button_create_post
-      @creates = true
+    def admin_acces
+      unless current_user && current_user.status?
+        flash[:alert] = 'Доступ запрещен.'
+        redirect_to root_path
+      end
     end
 
   end

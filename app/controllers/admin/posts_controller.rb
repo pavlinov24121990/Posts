@@ -1,7 +1,7 @@
 module Admin  
   class PostsController < ApplicationController
       before_action :find_post, only: %i[update show edit destroy]
-      before_action :button_create_post
+      before_action :authenticate_user!, :admin_acces
 
       def index
         @posts = Post.all
@@ -21,8 +21,11 @@ module Admin
         @post = Post.new
       end
 
+      
+
       def create
-        @post = Post.new(post_params)
+        @user = current_user
+        @post = @user.posts.new(post_params)
         if @post.save
           flash[:success] = "Post Created"
           redirect_to admin_posts_path
@@ -52,12 +55,16 @@ module Admin
         @post = Post.find(params[:id])
       end
 
+
       def post_params
         params.require(:post).permit(:body, :title)
       end
 
-      def button_create_post
-        @creates = true
+      def admin_acces
+        unless current_user && current_user.status?
+          flash[:alert] = 'Доступ запрещен.'
+          redirect_to root_path
+        end
       end
   end
 end

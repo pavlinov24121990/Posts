@@ -75,3 +75,4 @@ group :test do
 end
 
 gem 'devise', '~> 4.9', '>= 4.9.2'
+gem 'omniauth', '~> 2.1', '>= 2.1.1'

@@ -4,6 +4,7 @@
       <p><%= @comment.body %></p>
     </li>
   </ul>
+  <p><%= @comment.user.first_name %> <%= @comment.user.second_name %></p>
   <div>
     <%= link_to "Update post", edit_admin_post_comment_path(@post, @comment) %>
     <%= button_to "Delete post", admin_post_comment_path(@post, @comment), method: :delete, confirm: "Are you shure?" %>

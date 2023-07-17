@@ -7,6 +7,7 @@
       <li>
         <p><%= @post.body %></p>
       </li>
+      <p> <%= @post.user.first_name %>  <%= @post.user.second_name %></p> 
   </ul>
 </div>
 <h2> <%= flash[:success] %> </h2>
@@ -18,6 +19,7 @@
       <li>
         <p><%= c.body %></p>
       </li>
+        <p><%= c.user.first_name %>  <%= c.user.second_name %></p>
     <% end %>
   </ul>
 </div>

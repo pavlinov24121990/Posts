@@ -8,6 +8,7 @@
         <h2> <%= p.title %></h2>
         <p> <%= p.body %> </p> 
       </li>
+      <p> <%= p.user.first_name %>  <%= p.user.second_name %> </p> 
       <div>
       <%= link_to "Show comments", admin_post_path(p) %>
       </div>
